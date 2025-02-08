@@ -3,14 +3,14 @@
 </div>
 
 <p align="center">
-  <a href="https://github.com/rogueWookie/ccsds-hdr.nvim/actions/workflows/ci.yaml">
-    <img src="https://github.com/rogueWookie/ccsds-hdr.nvim/actions/workflows/ci.yaml/badge.svg" alt="CI Status">
+  <a href="https://github.com/shaneyost/ccsds-hdr.nvim/actions/workflows/ci.yaml">
+    <img src="https://github.com/shaneyost/ccsds-hdr.nvim/actions/workflows/ci.yaml/badge.svg" alt="CI Status">
   </a>
-  <a href="https://github.com/rogueWookie/ccsds-hdr.nvim/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/rogueWookie/ccsds-hdr.nvim" alt="License">
+  <a href="https://github.com/shaneyost/ccsds-hdr.nvim/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/shaneyost/ccsds-hdr.nvim" alt="License">
   </a>
-  <a href="https://github.com/rogueWookie/ccsds-hdr.nvim/issues">
-    <img src="https://img.shields.io/github/issues/rogueWookie/ccsds-hdr.nvim" alt="GitHub Issues">
+  <a href="https://github.com/shaneyost/ccsds-hdr.nvim/issues">
+    <img src="https://img.shields.io/github/issues/shaneyost/ccsds-hdr.nvim" alt="GitHub Issues">
   </a>
 </p>
 
@@ -27,7 +27,7 @@
 
 ```lua
 return {
-    "rogueWookie/ccsds-hdr.nvim",
+    "shaneyost/ccsds-hdr.nvim",
     dependencies = { "nvim-lua/plenary.nvim" }, -- for running the unit tests
     config = function()
         local ccsds = require("ccsds-hdr")
@@ -39,7 +39,7 @@ return {
 ## Full Configuration
 ```lua
 return {
-    "rogueWookie/ccsds-hdr.nvim",
+    "shaneyost/ccsds-hdr.nvim",
     dependencies = { "nvim-lua/plenary.nvim" }, -- for running the unit tests
     config = function()
         local ccsds = require("ccsds-hdr")
