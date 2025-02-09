@@ -1,20 +1,17 @@
 <div align="center">
-  <h1>✨ CCSDS (Decoder/Encoder)</h1>
-</div>
-
+<h1>✨ CCSDS (Decoder/Encoder)</h1>
 <p align="center">
-  <a href="https://github.com/shaneyost/ccsds-hdr.nvim/actions/workflows/ci.yaml">
-    <img src="https://github.com/shaneyost/ccsds-hdr.nvim/actions/workflows/ci.yaml/badge.svg" alt="CI Status">
-  </a>
-  <a href="https://github.com/shaneyost/ccsds-hdr.nvim/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/shaneyost/ccsds-hdr.nvim" alt="License">
-  </a>
-  <a href="https://github.com/shaneyost/ccsds-hdr.nvim/issues">
-    <img src="https://img.shields.io/github/issues/shaneyost/ccsds-hdr.nvim" alt="GitHub Issues">
-  </a>
+<a href="https://github.com/shaneyost/ccsds-hdr.nvim/actions/workflows/ci.yaml">
+<img src="https://github.com/shaneyost/ccsds-hdr.nvim/actions/workflows/ci.yaml/badge.svg" alt="CI Status">
+</a>
+<a href="https://github.com/shaneyost/ccsds-hdr.nvim/blob/main/LICENSE">
+<img src="https://img.shields.io/github/license/shaneyost/ccsds-hdr.nvim" alt="License">
+</a>
+<a href="https://github.com/shaneyost/ccsds-hdr.nvim/issues">
+<img src="https://img.shields.io/github/issues/shaneyost/ccsds-hdr.nvim" alt="GitHub Issues">
+</a>
 </p>
-
----
+</div>
 
 ## About  
 
