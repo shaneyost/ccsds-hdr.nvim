@@ -3,26 +3,21 @@ local utils = require("ccsds-hdr.utils")
 local M = {}
 
 function M.decode_header()
-	local header = {}
-	local fields = utils.new_ccsds_header_tbl()
+	local fields = {
+		packet_version = 0,
+		packet_type = 0,
+		secondary_header = 0,
+		application_id = 0,
+		sequence_flags = 0,
+		sequence_count = 0,
+		data_length = 0,
+	}
 
 	local ebuf = utils.get_buffer_handle_by_name("enc")
 	local dbuf = utils.get_buffer_handle_by_name("dec")
 
-	-- Remove unwanted characters, makes parsing w/ gmatch simple
-	local raw_input = vim.api.nvim_buf_get_lines(ebuf, 0, 1, false)
-	local raw_bytes = raw_input[1]:gsub("[,%s]", "")
+	local header = utils.convert_input_to_hex_table(vim.api.nvim_buf_get_lines(ebuf, 0, 1, false)[1])
 
-	-- Protect user entering invalid length. If valid, create our table of bytes
-	if #raw_bytes == 12 then
-		for every_two_chars in raw_bytes:gmatch("%x%x") do
-			table.insert(header, tonumber(every_two_chars, 16))
-		end
-	else
-		return vim.notify("Error: invalid length critiera, check input", vim.log.levels.ERROR)
-	end
-
-	-- tonumber creates nils on invalid hex digits, so validate good header table
 	if #header == 6 then
 		local word1 = bit.bor(bit.lshift(header[1], 8), header[2])
 		local word2 = bit.bor(bit.lshift(header[3], 8), header[4])

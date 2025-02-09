@@ -10,11 +10,7 @@ function M.setup(user_cfg)
 	conf.cfg.keymaps.open.rhs = ui.setup
 	conf.cfg.keymaps.next.rhs = ui.focus_next_window
 	conf.cfg.keymaps.close.rhs = ui.close_all_windows
-    conf.cfg.keymaps.test.rhs = M.test
 	conf.setup(user_cfg)
 end
 
-function M.test()
-    print("hello")
-end
 return M

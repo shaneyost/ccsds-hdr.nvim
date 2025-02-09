@@ -53,16 +53,6 @@ M.cfg = {
 				desc = "ccsds-hdr close",
 			},
 		},
-        test = {
-			mode = "n",
-			lhs = "<leader>ct",
-			rhs = nil,
-			opts = {
-				noremap = true,
-				silent = true,
-				desc = "ccsds-hdr test",
-			},
-        },
 	},
 }
 

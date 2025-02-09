@@ -54,16 +54,28 @@ function M.get_window_handle_by_buffer(buffer_handle)
 	error("No window found displaying buffer handle")
 end
 
-function M.new_ccsds_header_tbl()
-    return {
-        packet_version = 0,
-        packet_type = 0,
-        secondary_header = 0,
-        application_id = 0,
-        sequence_flags = 0,
-        sequence_count = 0,
-        data_length = 0,
-    }
+function M.convert_input_to_hex_table(user_input, valid_length)
+	if type(user_input) ~= "string" then
+		error("Invalid argument, arg must be a string")
+	end
+	if valid_length and type(valid_length) ~= "number" then
+		error("Invalid argument, arg must be a number")
+	end
+	-- scrubbed:gsub only works on evens, also make arg optional
+	valid_length = valid_length or 12
+	if valid_length % 2 ~= 0 then
+		error("Invalid argument, arg must be even")
+	end
+	-- ensure gsub produces expected length
+	local scrubbed = user_input:gsub("[,%s]", "")
+	if #scrubbed ~= valid_length then
+		error("Unexpected length mismatch, check input")
+	end
+	local hextable = {}
+	scrubbed:gsub("%x%x", function(byte)
+		table.insert(hextable, tonumber(byte, 16))
+	end)
+	return hextable
 end
 
 return M
