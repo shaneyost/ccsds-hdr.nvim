@@ -16,7 +16,8 @@ function M.decode_header()
 	local ebuf = utils.get_buffer_handle_by_name("enc")
 	local dbuf = utils.get_buffer_handle_by_name("dec")
 
-	local header = utils.convert_input_to_hex_table(vim.api.nvim_buf_get_lines(ebuf, 0, 1, false)[1])
+    local raw = vim.api.nvim_buf_get_lines(ebuf, 0, 1, false)
+	local header = utils.convert_input_to_hex_table(raw[1])
 
 	if #header == 6 then
 		local word1 = bit.bor(bit.lshift(header[1], 8), header[2])
