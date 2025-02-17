@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Neovim
+        uses: rhysd/action-setup-vim@v1
+        with:
+          neovim: true
+
+      - name: Run CI checks (Lint, Syntax, Tests)
+        run: make ci
+
+      - name: Show Neovim Version
+        run: |
+          echo "Neovim Version: $(nvim --version | head -n1)"
+
