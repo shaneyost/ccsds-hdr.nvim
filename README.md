@@ -15,7 +15,7 @@
 
 ## About  
 
-**ccsds-hdr.nvim** is a neovim plugin for working w/ the [**CCSDS Space Packet Protocol**](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://public.ccsds.org/Pubs/133x0b2e2.pdf&ved=2ahUKEwigqvPy2OuLAxWYGDQIHX1dAbkQFnoECA4QAQ&usg=AOvVaw2MNioMmgO_qpa6XMpMHKwA). This simple tool makes it easy to encode or decode a CCSDS packet's six byte primary header.
+**ccsds-hdr.nvim** is a neovim plugin for working w/ the [**CCSDS Space Packet Protocol**](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://public.ccsds.org/Pubs/133x0b2e2.pdf&ved=2ahUKEwigqvPy2OuLAxWYGDQIHX1dAbkQFnoECA4QAQ&usg=AOvVaw2MNioMmgO_qpa6XMpMHKwA). This tool is built to handle the following tasks with clarity and ease.
 
 - **Decode a 6-byte primary header** into its individual CCSDS fields
 - **Encode a 6-byte primary header** from user-inputted field values
