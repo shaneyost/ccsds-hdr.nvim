@@ -1,5 +1,5 @@
 <div align="center">
-<h1>✨ CCSDS (Decoder/Encoder)</h1>
+<h1>CCSDS (Decoder/Encoder)</h1>
 <p align="center">
 <a href="https://github.com/shaneyost/ccsds-hdr.nvim/actions/workflows/ci.yaml">
 <img src="https://github.com/shaneyost/ccsds-hdr.nvim/actions/workflows/ci.yaml/badge.svg" alt="CI Status">
