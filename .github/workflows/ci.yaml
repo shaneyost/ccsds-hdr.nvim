@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}  # Ensures push access
+          persist-credentials: true  # Keep authentication for pushing
+
+      - name: Set up Neovim
+        uses: rhysd/action-setup-vim@v1
+        with:
+          neovim: true
+
+      - name: Run CI checks (Lint, Syntax, Tests)
+        run: make ci
+
+      - name: Install mini.doc
+        run: |
+          PLUGIN_DIR="$HOME/.local/share/nvim/site/pack/vendor/start"
+          mkdir -p "$PLUGIN_DIR"
+          git clone --depth=1 \
+            https://github.com/echasnovski/mini.nvim \
+            "$PLUGIN_DIR/mini.nvim"
+
+      - name: Make docs
+        run: make docs
+
+      - name: Commit and Push Updated Docs
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add doc/ccsds-hdr.txt
+          if git diff --cached --quiet; then
+            echo "No changes in documentation. Skipping commit."
+          else
+            git commit -m "docs: auto-update generated documentation"
+            git push
+          fi
+
+      - name: Show Neovim Version
+        run: |
+          echo "Neovim Version: $(nvim --version | head -n1)"
+

@@ -1,0 +1,9 @@
+CcsdsHdr._cfg	ccsds-hdr.txt	/*CcsdsHdr._cfg*
+CcsdsHdr._decode()	ccsds-hdr.txt	/*CcsdsHdr._decode()*
+CcsdsHdr._encode()	ccsds-hdr.txt	/*CcsdsHdr._encode()*
+CcsdsHdr.animate_decode()	ccsds-hdr.txt	/*CcsdsHdr.animate_decode()*
+CcsdsHdr.animate_encode()	ccsds-hdr.txt	/*CcsdsHdr.animate_encode()*
+CcsdsHdr.close()	ccsds-hdr.txt	/*CcsdsHdr.close()*
+CcsdsHdr.open()	ccsds-hdr.txt	/*CcsdsHdr.open()*
+CcsdsHdr.setup()	ccsds-hdr.txt	/*CcsdsHdr.setup()*
+CcsdsHdr.swap()	ccsds-hdr.txt	/*CcsdsHdr.swap()*

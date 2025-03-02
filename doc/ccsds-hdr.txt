@@ -1,0 +1,180 @@
+==============================================================================
+------------------------------------------------------------------------------
+                                                              *CcsdsHdr.setup()*
+                          `CcsdsHdr.setup`({user_cfg})
+Merges the user's config table with default config table
+Parameters ~
+{user_cfg} `(table|nil)` Module config table.
+
+Usage ~
+>lua
+
+  require('ccsds-hdr').setup() -- use default config
+  -- OR
+  require('ccsds-hdr').setup({}) -- replace {} with your config table
+<
+
+==============================================================================
+------------------------------------------------------------------------------
+                                                                 *CcsdsHdr._cfg*
+                                `CcsdsHdr._cfg`
+The default configuration table
+>lua
+  CcsdsHdr._cfg = {
+      -- Title of the Encoder window (shows up in top center)
+      encoder_title = "Encoded",
+      -- Title of the Decoder window (shows up in top center)
+      decoder_title = "Decoded",
+      -- Initial values for encoder
+      initial_encoder_vals = { string.format("0A 0B C4 01 37 9A") },
+      -- Initial values for decoder
+      initial_decoder_vals = {
+          string.format("Packet Version: 0"),
+          string.format("Packet Type: 0"),
+          string.format("Secondary Header: 1"),
+          string.format("Application ID: 0x20B"),
+          string.format("Sequence Flag: 3"),
+          string.format("Sequence Count: 1025"),
+          string.format("Data Length: 14234"),
+      },
+      -- Highlights applied for bytes/fields updated after decoding/encoding
+      hl_update_color = { fg = "#2E3440", bg = "#88C0D0", bold = false },
+      -- Highlights applied for bytes/fields that are invalid after decoding/encoding
+      hl_errors_color = { fg = "#2E3440", bg = "#D08770", bold = false },
+      -- Highlights applied for bytes/fields overall
+      hl_normal_color = { fg = "#D8DEE9", bg = "#2E3440", bold = false },
+      -- Highlights applied for all borders of encoder/decoder windows
+      hl_border_color = { fg = "#88C0D0", bold = false },
+  }
+<
+
+==============================================================================
+------------------------------------------------------------------------------
+                                                            *CcsdsHdr._decode()*
+                          `CcsdsHdr._decode`({bytes})
+Decodes 6 CCSDS bytes from a primary header into fields
+Parameters ~
+{bytes} `(table)` The 6 bytes of primary CCSDS header
+Return ~
+`(table)` The 7 CCSDS fields decoded
+
+Usage ~
+>lua
+
+  parse = require('ccsds-hdr.parser')
+  local fields = parse._decode({0x0A, 0x0B, 0xC4, 0x01, 0x37, 0x9A})
+<
+------------------------------------------------------------------------------
+                                                            *CcsdsHdr._encode()*
+                          `CcsdsHdr._encode`({values})
+Encodes 7 CCSDS fields into a 6 byte primary header
+Parameters ~
+{values} `(table)` The 7 CCSDS fields
+Return ~
+`(table)` The 6 bytes CCSDS primary header
+
+Usage ~
+>lua
+
+  parse = require('ccsds-hdr.parser')
+  local bytes = parse._encode({0, 0, 1, 0x20B, 3, 1025, 14234})
+<
+------------------------------------------------------------------------------
+                                                     *CcsdsHdr.animate_decode()*
+                          `CcsdsHdr.animate_decode`()
+Sets up animation for errors/diffs during decoding
+
+Usage ~
+>lua
+
+  ccsds = require('ccsds-hdr')
+  -- Set a keymapping
+  vim.keymap.set("n", "<leader>cd", ccsds.parser.animate_decode, {
+    noremap = true,
+    silent = true,
+    desc = "ccsds-hdr decode",
+  })
+  -- Call setup
+  ccsds.setup({})
+  -- See readme for more info on passing in a user config
+<
+------------------------------------------------------------------------------
+                                                     *CcsdsHdr.animate_encode()*
+                          `CcsdsHdr.animate_encode`()
+Sets up animation for errors/diffs during encoding
+
+Usage ~
+>lua
+
+  ccsds = require('ccsds-hdr')
+  -- Set a keymapping
+  vim.keymap.set("n", "<leader>ce", ccsds.parser.animate_encode, {
+    noremap = true,
+    silent = true,
+    desc = "ccsds-hdr encode",
+  })
+  -- Call setup
+  ccsds.setup({})
+  -- See readme for more info on passing in a user config
+<
+
+==============================================================================
+------------------------------------------------------------------------------
+                                                               *CcsdsHdr.swap()*
+                               `CcsdsHdr.swap`()
+Helper function to switch between the encoder buffer or decoder buffer
+
+Usage ~
+>lua
+
+  ccsds = require('ccsds-hdr')
+  -- Set a keymapping
+  vim.keymap.set("n", "<leader>cn", ccsds.parser.swap, {
+    noremap = true,
+    silent = true,
+    desc = "ccsds-hdr encode",
+  })
+  -- Call setup
+  ccsds.setup({})
+  -- See readme for more info on passing in a user config
+<
+------------------------------------------------------------------------------
+                                                              *CcsdsHdr.close()*
+                               `CcsdsHdr.close`()
+Helper function to close the tool vs exiting each buffer manually :q!
+
+Usage ~
+>lua
+
+  ccsds = require('ccsds-hdr')
+  -- Set a keymapping
+  vim.keymap.set("n", "<leader>cc", ccsds.parser.close, {
+    noremap = true,
+    silent = true,
+    desc = "ccsds-hdr encode",
+  })
+  -- Call setup
+  ccsds.setup({})
+  -- See readme for more info on passing in a user config
+<
+------------------------------------------------------------------------------
+                                                               *CcsdsHdr.open()*
+                               `CcsdsHdr.open`()
+Helper function to pop open the tool.
+
+Usage ~
+>lua
+
+  ccsds = require('ccsds-hdr')
+  -- Set a keymapping
+  vim.keymap.set("n", "<leader>co", ccsds.parser.open, {
+    noremap = true,
+    silent = true,
+    desc = "ccsds-hdr encode",
+  })
+  -- Call setup
+  ccsds.setup({})
+  -- See readme for more info on passing in a user config
+<
+
+ vim:tw=78:ts=8:noet:ft=help:norl:
