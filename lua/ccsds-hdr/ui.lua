@@ -8,14 +8,24 @@ local _ui_elements = {
         t = cfg._get("encoder_title"),
         w = 26,
         h = 1,
-        i = cfg._get("initial_encoder_vals"),
+        i = { 
+            string.format("0A 0B C4 01 37 9A") 
+        },
     },
     {
         n = "dec",
         t = cfg._get("decoder_title"),
         w = 26,
         h = 7,
-        i = cfg._get("initial_decoder_vals"),
+        i = {
+            string.format("Packet Version: 0"),
+            string.format("Packet Type: 0"),
+            string.format("Secondary Header: 1"),
+            string.format("Application ID: 0x20B"),
+            string.format("Sequence Flag: 3"),
+            string.format("Sequence Count: 1025"),
+            string.format("Data Length: 14234"),
+        },
     },
 }
 
